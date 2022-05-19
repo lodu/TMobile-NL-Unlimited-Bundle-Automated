@@ -1,6 +1,6 @@
 services:
-  unlimited-sim: 
-    image: unlimited-sim-automation:latest
+  unlimited-sim:
+    image: ghcr.io/lodu/tmobile-nl-unlimited-bundle-automated:main
     environment:
       - EMAIL=$EMAIL
       - PASSWORD=$PASSWORD

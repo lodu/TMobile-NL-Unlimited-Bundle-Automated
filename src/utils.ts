@@ -64,5 +64,5 @@ export function checkENVs() {
 }
 
 export function minsToMs(minutes: number): number {
-  return minutes * 1000;
+  return minutes * 1000 * 60;
 }

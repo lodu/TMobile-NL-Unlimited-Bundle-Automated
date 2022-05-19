@@ -1,37 +1,65 @@
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
+
 > If you end up using this, please [contact me](unlimited-sim-automation@lodu.dev) so I can improve this software.
 # T-Mobile Unlimited GO Auto Bundle Requester
 
 ### Without needing to sniff your URL every month.
+It runs every 5 mins, and requests new bundle when MB's is less than 2000.
 
-## How to use
-1. Understand the license
-2. `git clone` the repo (duhh)
-3. Create `.env` file in root directory:
+## Usage (production)
+There are 3 main ways to use this software in production:
+1. running the Node.js locally
+2. running it as a Docker container
+3. running it as a Docker container via docker-compose
+
+### Node.js with Yarn/NPM
+1. `git clone https://github.com/lodu/TMobile-NL-Unlimited-Bundle-Automated`
+2. `yarn` or `npm install`
+3.  create a file called `.env` in root folder with contents:
+      ```bash
+      EMAIL=example@example.com
+      PASSWORD=3x4mp1e!
+      MSISDN=+3161234567890
+      ```
+2.  `yarn build` or `npm run build`
+3.  `yarn start-demon` or `npm run start-demon`
+4. Done
+
+
+### Docker
+1.  create a file called `.env`:
+      ```bash
+      EMAIL=example@example.com
+      PASSWORD=3x4mp1e!
+      MSISDN=+3161234567890
+      ```
+2. `docker pull ghcr.io/lodu/tmobile-nl-unlimited-bundle-automated:main`
+3. `docker run --env-file .env ghcr.io/lodu/tmobile-nl-unlimited-bundle-automated:main`
+
+### docker-compose
+1.  create a file called `.env`:
+      ```bash
+      EMAIL=example@example.com
+      PASSWORD=3x4mp1e!
+      MSISDN=+3161234567890
+      ```
+2. copy [`docker-compose.yaml`](./docker-compose.yaml) to a local `docker-compose.yaml` file
+3. `docker-compose up -d`
+
+## Development
+1. `git clone` the repo (duhh)
+2. Create `.env` file in root directory:
    ```bash
    EMAIL=example@example.com
    PASSWORD=3x4mp1e!
    MSISDN=+3161234567890
    ```
-4. Start software via one of 3 options explained below:
-   - Yarn/NPM
-   - Docker
-   - docker-compose
+3. Install packages: `yarn` or `npm install`
 
-#### Yarn/NPM
+4. Run  in development for filewatcher `yarn dev` or `npm run dev`
 
-1.  `yarn` or `npm`
-2.  `yarn build` or `npm run build`
-3.  `yarn start-demon` or `npm run start-demon`
+5. Do ya thing.
 
-#### Docker
-
-1. `docker build . -t unlimited-sim-automation`
-2. `docker run --env-file .env unlimited-sim-automation`
-
-#### docker-compose
-
-1. `docker-compose up -d`
 
 ## Future
 
@@ -40,3 +68,7 @@ Im looking into adding KPN and Vodafone via some magical way, not sure how.
 ## PR's
 
 PR's/MR's are welcomed if you have any additions and or points of improvement
+
+## Issues
+Please feel free to open an issue, I'm glad to help.
+However do not use it as a tech support please...
