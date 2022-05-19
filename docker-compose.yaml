@@ -1,0 +1,8 @@
+services:
+  unlimited-sim: 
+    image: unlimited-sim-automation:latest
+    environment:
+      - EMAIL=$EMAIL
+      - PASSWORD=$PASSWORD
+      - MSISDN=$MSISDN
+    command: yarn start-demon
