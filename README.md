@@ -1,19 +1,19 @@
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
-
+> If you end up using this, please [contact me](unlimited-sim-automation@lodu.dev) so I can improve this software.
 # T-Mobile Unlimited GO Auto Bundle Requester
 
 ### Without needing to sniff your URL every month.
 
 ## How to use
-
-1. `git clone` the repo (duhh)
-2. Create `.env` file in root directory:
+1. Understand the license
+2. `git clone` the repo (duhh)
+3. Create `.env` file in root directory:
    ```bash
    EMAIL=example@example.com
    PASSWORD=3x4mp1e!
    MSISDN=+3161234567890
    ```
-3. Start software via one of 3 options explained below:
+4. Start software via one of 3 options explained below:
    - Yarn/NPM
    - Docker
    - docker-compose
