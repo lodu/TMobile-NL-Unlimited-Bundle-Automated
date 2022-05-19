@@ -1,6 +1,6 @@
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
-> If you end up using this, please [contact me](unlimited-sim-automation@lodu.dev) so I can improve this software.
+> If you end up using this, please [contact me](mailto:unlimited-sim-automation@lodu.dev) so I can improve this software.
 # T-Mobile Unlimited GO Auto Bundle Requester
 
 ### Without needing to sniff your URL every month.
