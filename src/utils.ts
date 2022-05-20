@@ -1,11 +1,12 @@
 import fetch, { Headers, Response } from "node-fetch";
+import FormData from "form-data";
 
 export async function fetchURI(
   URI: string,
   method: "GET" | "POST",
   headers: Headers,
   name: string,
-  body?: string,
+  body?: string | FormData,
   callback?: Function,
   maxRetries: number = 10
 ) {

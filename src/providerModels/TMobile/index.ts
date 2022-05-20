@@ -22,6 +22,8 @@ export default class TMobile {
     Authorization: `Basic OWhhdnZhdDZobTBiOTYyaTo=`, // Can be used by anyone
     "Content-Type": "application/json",
   };
+
+  private loginCredentials: LoginCredentials;
   private BearerAuthorizationCode: string;
   private subscriptionURL: string;
   private buyingCode: string;
@@ -29,6 +31,10 @@ export default class TMobile {
   constructor(BASE_URI: string = "https://capi.t-mobile.nl") {
     this.API_URI = BASE_URI;
     this.TMOBILE_MSISDN = process.env.MSISDN;
+    this.loginCredentials = {
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+    };
   }
 
   private async getAuthorizationCode(): Promise<string> {
@@ -39,8 +45,8 @@ export default class TMobile {
       Object.assign(this.DEFAULT_HEADERS, this.DEFAULT_AUTH_TOKEN_HEADERS)
     );
     const body: string = JSON.stringify({
-      Username: process.env.EMAIL,
-      Password: process.env.PASSWORD,
+      Username: this.loginCredentials.username,
+      Password: this.loginCredentials.password,
       ClientId: "9havvat6hm0b962i",
       Scope:
         "usage+readfinancial+readsubscription+readpersonal+readloyalty+changesubscription+weblogin",

@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /node_modules
+/e2e
 
 # Logs
 logs
