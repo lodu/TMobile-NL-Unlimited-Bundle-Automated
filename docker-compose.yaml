@@ -5,4 +5,4 @@ services:
       - EMAIL=$EMAIL
       - PASSWORD=$PASSWORD
       - MSISDN=$MSISDN
-    command: yarn start-demon
+    command: yarn start-daemon

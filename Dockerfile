@@ -15,4 +15,4 @@ COPY package.json ./package.json
 RUN yarn install
 COPY --from=build /app/dist ./dist
 
-CMD yarn start-demon
+CMD yarn start-daemon
