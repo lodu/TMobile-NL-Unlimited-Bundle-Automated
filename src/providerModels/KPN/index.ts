@@ -4,7 +4,7 @@ import FormData from "form-data";
 import { fetchURI, makeHeaders } from "../../utils";
 import { remote } from "webdriverio";
 
-(async () => {
+export const func = async () => {
   const browser = await remote({
     capabilities: {
       browserName: "chrome",
@@ -21,4 +21,4 @@ import { remote } from "webdriverio";
 
   await browser.saveScreenshot("./screenshot.png");
   await browser.deleteSession();
-})();
+};
