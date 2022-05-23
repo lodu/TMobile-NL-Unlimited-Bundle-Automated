@@ -5,6 +5,10 @@
 
 ### Without needing to sniff your URL every month.
 It runs every 5 mins, and requests new bundle when MB's is less than 2000.
+Firstly a login token is retrieved via the "regular" log in URL, from which a Bearer token is retrieved.
+With the Bearer token regular API requests (T-Mobile user-agent is 'spoofed') we request current bundles, how much is left on these bundles and then (when needed) a new bundle is requested.
+Every request is retried at least 10 times when a request fails.
+PM2 is used so it should restart if it crashes.
 
 ## Usage (production)
 There are 3 main ways to use this software in production:
