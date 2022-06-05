@@ -207,9 +207,6 @@ export default class TMobile {
       this.subscriptionURL != undefined
         ? this.subscriptionURL
         : await this.handleSubscriptionURL();
-    console.log(URI);
-
-    console.log(`Bearer ${this.BearerAuthorizationCode}`);
 
     const headers: Headers = makeHeaders(
       Object.assign(this.DEFAULT_HEADERS, {
@@ -224,7 +221,6 @@ export default class TMobile {
 
     const callback = async (response: Response) => {
       const res = response;
-      console.log(res);
       if (
         res.status != 202 &&
         res.statusText ==
