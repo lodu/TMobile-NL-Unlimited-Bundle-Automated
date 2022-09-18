@@ -1,10 +1,9 @@
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
-> If you end up using this, please [contact me](mailto:unlimited-sim-automation@lodu.dev) so I can improve this software.
 # T-Mobile Unlimited GO Auto Bundle Requester
 
 ### Without needing to sniff your URL every month.
-It runs every 5 mins, and requests new bundle when MB's is less than 2000.
+It runs every 5 mins (can be set with ENV variable `UPDATE_INTERVAL`), and requests new bundle when MB's is less than 2000.
 Firstly a login token is retrieved via the "regular" log in URL, from which a Bearer token is retrieved.
 With the Bearer token the regular API is used to request: current bundles, how much is left on these bundles and then (when needed) a new bundle is requested.
 Every request is retried at least 10 times when a request fails.
@@ -24,6 +23,7 @@ There are 3 main ways to use this software in production:
       EMAIL=example@example.com
       PASSWORD=3x4mp1e!
       MSISDN=+3161234567890
+      UPDATE_INTERVAL=5
       ```
 2.  `yarn build` or `npm run build`
 3.  `yarn start-demon` or `npm run start-demon`

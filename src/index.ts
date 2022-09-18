@@ -1,7 +1,8 @@
 import "dotenv/config";
 
+import { checkENVs, getInterval } from "./utils";
+
 import TMobile from "./providerModels/TMobile";
-import { checkENVs, minsToMs } from "./utils";
 
 checkENVs();
 
@@ -13,6 +14,7 @@ const run = async () => {
     tmobile.requestBundle();
   }
 };
+run()
 setInterval(() => {
   run();
-}, minsToMs(5));
+}, getInterval());

@@ -63,6 +63,14 @@ export function checkENVs() {
   }
 }
 
-export function minsToMs(minutes: number): number {
+// When ENV-variable is not set return 5
+export function getInterval(): number {
+  const interval: number = isNaN(parseInt(process.env.UPDATE_INTERVAL || ""))
+    ? 5
+    : parseInt(process.env.UPDATE_INTERVAL);
+  return minsToMs(interval);
+}
+
+function minsToMs(minutes: number): number {
   return minutes * 1000 * 60;
 }
