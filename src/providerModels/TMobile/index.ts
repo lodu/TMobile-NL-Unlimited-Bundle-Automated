@@ -194,10 +194,11 @@ export default class TMobile {
     for (let bundle of bundles) {
       if (bundle.ZoneColor == "NL") {
         MBsLeft += bundle.Remaining.Value / 1024;
-        if (bundle.BuyingCode != undefined) buyingCodeTemp = bundle.BuyingCode;
+        // if (bundle.BuyingCode != undefined) buyingCodeTemp = bundle.BuyingCode; DOESN'T WORK ANYMORE, REPLACED BY SETTING BUYINGCODE 'A0DAY01'
       }
     }
-    this.buyingCode = buyingCodeTemp;
+    // this.buyingCode = buyingCodeTemp;
+    this.buyingCode = 'A0DAY01';
     return Math.floor(MBsLeft);
   }
 
