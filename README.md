@@ -36,6 +36,7 @@ There are 3 main ways to use this software in production:
       EMAIL=example@example.com
       PASSWORD=3x4mp1e!
       MSISDN=+3161234567890
+      UPDATE_INTERVAL=5
       ```
 2. `docker pull ghcr.io/lodu/tmobile-nl-unlimited-bundle-automated:main`
 3. `docker run --env-file .env ghcr.io/lodu/tmobile-nl-unlimited-bundle-automated:main`
@@ -46,6 +47,7 @@ There are 3 main ways to use this software in production:
       EMAIL=example@example.com
       PASSWORD=3x4mp1e!
       MSISDN=+3161234567890
+      UPDATE_INTERVAL=5
       ```
 2. copy [`docker-compose.yaml`](./docker-compose.yaml) to a local `docker-compose.yaml` file
 3. `docker-compose up -d`
@@ -57,17 +59,13 @@ There are 3 main ways to use this software in production:
    EMAIL=example@example.com
    PASSWORD=3x4mp1e!
    MSISDN=+3161234567890
+   UPDATE_INTERVAL=5
    ```
 3. Install packages: `yarn` or `npm install`
 
 4. Run  in development for filewatcher `yarn dev` or `npm run dev`
 
 5. Do ya thing.
-
-
-## Future
-
-Im looking into adding KPN and Vodafone via some magical way, not sure how.
 
 ## PR's
 
