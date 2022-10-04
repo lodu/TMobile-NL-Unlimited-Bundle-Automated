@@ -1,0 +1,8 @@
+services:
+  unlimited-sim:
+    build: .
+    environment:
+      - EMAIL=$EMAIL
+      - PASSWORD=$PASSWORD
+      - MSISDN=$MSISDN
+    command: yarn start-daemon

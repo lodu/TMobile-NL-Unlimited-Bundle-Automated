@@ -1,20 +1,28 @@
 import "dotenv/config";
 
-import { checkENVs, getInterval } from "./utils";
+import { checkENVs, getInterval, ProvidersEnabled } from "./utils";
 
 import TMobile from "./providerModels/TMobile";
+import KPN from "./providerModels/KPN";
 
-checkENVs();
+const providersEnabled: ProvidersEnabled = checkENVs();
+console.log(providersEnabled);
+const interval: number = getInterval();
+let KPN_counter = 6; // every 6 TMobile (5mins * 6 = 30 mins)
 
 const run = async () => {
-  const tmobile = new TMobile();
-  const MBsLeft = await tmobile.getMBsLeft();
-  console.log(`${MBsLeft} MB's left`);
-  if (MBsLeft < 2000) {
-    tmobile.requestBundle();
+  if (providersEnabled.KPN && KPN_counter == 6) {
+    const kpn = new KPN();
+    await kpn.run();
+    KPN_counter = 0;
   }
+  if (providersEnabled.TMobile) {
+    const tmobile = new TMobile();
+    const MBsLeft = await tmobile.run();
+  }
+  KPN_counter += 1;
 };
-run()
+run();
 setInterval(() => {
   run();
-}, getInterval());
+}, interval);

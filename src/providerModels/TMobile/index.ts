@@ -160,7 +160,7 @@ export default class TMobile {
     return subscriptionURL;
   }
 
-  public async getMBsLeft(): Promise<number> {
+  private async getMBsLeft(): Promise<number> {
     let buyingCodeTemp: string;
     let bundles: Bundle[];
     const subscriptionURL: string =
@@ -198,11 +198,11 @@ export default class TMobile {
       }
     }
     // this.buyingCode = buyingCodeTemp;
-    this.buyingCode = 'A0DAY01';
+    this.buyingCode = "A0DAY01";
     return Math.floor(MBsLeft);
   }
 
-  public async requestBundle() {
+  private async requestBundle() {
     if (this.buyingCode == undefined) await this.getMBsLeft();
     const URI: string =
       this.subscriptionURL != undefined
@@ -237,5 +237,12 @@ export default class TMobile {
     };
 
     await fetchURI(URI, "POST", headers, "requestBundle", body, callback);
+  }
+  public async run() {
+    const MBsLeft: number = await this.getMBsLeft();
+    console.log(`${MBsLeft} MB's left`);
+    if (MBsLeft < 2000) {
+      this.requestBundle();
+    }
   }
 }

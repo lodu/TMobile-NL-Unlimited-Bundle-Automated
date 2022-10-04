@@ -1,5 +1,18 @@
 import fetch, { Headers, Response } from "node-fetch";
 
+export interface ProvidersEnabled {
+  TMobile?: boolean;
+  KPN?: boolean;
+}
+
+export const interval: number = isNaN(
+  parseInt(process.env.UPDATE_INTERVAL || "")
+)
+  ? 5
+  : parseInt(process.env.UPDATE_INTERVAL);
+
+export const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
 export async function fetchURI(
   URI: string,
   method: "GET" | "POST",
@@ -52,22 +65,35 @@ export function makeHeaders(headersAsObject: object): Headers {
   return headers;
 }
 
-export function checkENVs() {
+export function checkENVs(): ProvidersEnabled {
+  let enabledProviders: ProvidersEnabled = { TMobile: false, KPN: false };
   if (
-    [process.env.EMAIL, process.env.PASSWORD, process.env.MSISDN].includes(
+    ![process.env.EMAIL, process.env.PASSWORD, process.env.MSISDN].includes(
       undefined
     )
   ) {
-    console.error("ENV variables not set");
+    enabledProviders.TMobile = true;
+  }
+  if (
+    ![
+      process.env.KPN_EMAIL,
+      process.env.KPN_PASSWORD,
+      process.env.KPN_MSISDN,
+    ].includes(undefined)
+  ) {
+    enabledProviders.KPN = true;
+  }
+  if (Object.values(enabledProviders).every((e) => e == false)) {
+    console.error(
+      `Neither: ${Object.keys(enabledProviders)} their ENV's are set correct`
+    );
     process.exit();
   }
+  return enabledProviders;
 }
 
 // When ENV-variable is not set return 5
 export function getInterval(): number {
-  const interval: number = isNaN(parseInt(process.env.UPDATE_INTERVAL || ""))
-    ? 5
-    : parseInt(process.env.UPDATE_INTERVAL);
   return minsToMs(interval);
 }
 
