@@ -26,7 +26,7 @@ There are 3 main ways to use this software in production:
       UPDATE_INTERVAL=5
       ```
 2.  `yarn build` or `npm run build`
-3.  `yarn start-demon` or `npm run start-demon`
+3.  `yarn start-daemon` or `npm run start-daemon`
 4. Done
 
 
