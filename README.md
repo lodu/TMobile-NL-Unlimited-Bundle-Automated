@@ -1,3 +1,5 @@
+>>> DOES NOT WORK!!!! I might update when someone proposes a fix on the Tweakers thread, however I do not use T-Mobile myself so it has 0 prio for me.
+
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
 # T-Mobile Unlimited GO Auto Bundle Requester
