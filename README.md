@@ -1,6 +1,7 @@
 >> DOES NOT WORK!!!! I might update when someone proposes a fix on the Tweakers thread, however I do not use T-Mobile myself so it has 0 prio for me.
 
 >> Update (2023-12-09): Someone proposed a [solution](https://gathering.tweakers.net/forum/list_message/76494790#76494790), I have yet to test this etc but will definetly have a look soon<sup>tm</sup>
+>> Update (2023-12-09 v2): Uuuh awkward, apparently my friend doesn't have tmobile/odido unlimited anymore so can't use his credentials to test. Since I have Vodafone myself it's impossible for me to develop.
 
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
