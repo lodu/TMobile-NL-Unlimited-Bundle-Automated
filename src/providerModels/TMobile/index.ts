@@ -16,7 +16,7 @@ export default class TMobile {
   private PERSONAL_API_URI: string;
   private TMOBILE_MSISDN: string; // +3161234567890
   private DEFAULT_HEADERS: object = {
-    "User-Agent": "T-Mobile 5.3.28 (Android 10; 10)",
+    "User-Agent": "ODIDO 8.0.0 (Android 12; 12)",
   };
   private DEFAULT_AUTH_TOKEN_HEADERS: object = {
     Authorization: `Basic OWhhdnZhdDZobTBiOTYyaTo=`, // Can be used by anyone
@@ -26,73 +26,15 @@ export default class TMobile {
   private subscriptionURL: string;
   private buyingCode: string;
 
-  constructor(BASE_URI: string = "https://capi.t-mobile.nl") {
+  constructor(BASE_URI: string = "https://capi.odido.nl") {
     this.API_URI = BASE_URI;
     this.TMOBILE_MSISDN = process.env.MSISDN;
+    this.BearerAuthorizationCode = process.env.AUTHORIZATIONTOKEN
   }
 
-  private async getAuthorizationCode(): Promise<string> {
-    let AuthorizationCode: string = null;
-
-    const URI: string = `${this.API_URI}/login?response_type=code`;
-    const headers: Headers = makeHeaders(
-      Object.assign(this.DEFAULT_HEADERS, this.DEFAULT_AUTH_TOKEN_HEADERS)
-    );
-    const body: string = JSON.stringify({
-      Username: process.env.EMAIL,
-      Password: process.env.PASSWORD,
-      ClientId: "9havvat6hm0b962i",
-      Scope:
-        "usage+readfinancial+readsubscription+readpersonal+readloyalty+changesubscription+weblogin",
-    });
-
-    const callback = (response: Response): boolean => {
-      AuthorizationCode = response.headers.get("AuthorizationCode");
-      if (AuthorizationCode != null) return true;
-      return false;
-    };
-
-    await fetchURI(
-      URI,
-      "POST",
-      headers,
-      "getAuthorizationCode",
-      body,
-      callback
-    );
-
-    return AuthorizationCode;
-  }
-
-  public async handleBearerAuthorizationCode() {
-    const authorizationCode: string = await this.getAuthorizationCode();
-    const headers: Headers = makeHeaders(
-      Object.assign(this.DEFAULT_HEADERS, this.DEFAULT_AUTH_TOKEN_HEADERS)
-    );
-    const URI: string = `${this.API_URI}/createtoken`;
-    const body: string = JSON.stringify({
-      AuthorizationCode: authorizationCode,
-    });
-
-    const callback = (response: Response): boolean => {
-      this.BearerAuthorizationCode = response.headers.get("AccessToken");
-      if (this.BearerAuthorizationCode != undefined) return true;
-      return false;
-    };
-
-    await fetchURI(
-      URI,
-      "POST",
-      headers,
-      "handleBearerAuthorizationCode",
-      body,
-      callback
-    );
-  }
 
   private async getSubscriptionsResource(): Promise<SubscriptionsResource> {
     let subscriptionsResource: SubscriptionsResource = null;
-    await this.handleBearerAuthorizationCode();
 
     const URI: string = `${this.API_URI}/account/current?resourcelabel=LinkedSubscriptions`;
     const headers: Headers = makeHeaders(
