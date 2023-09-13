@@ -1,11 +1,6 @@
->> DOES NOT WORK!!!! I might update when someone proposes a fix on the Tweakers thread, however I do not use T-Mobile myself so it has 0 prio for me.
-
->> Update (2023-12-09): Someone proposed a [solution](https://gathering.tweakers.net/forum/list_message/76494790#76494790), I have yet to test this etc but will definetly have a look soon<sup>tm</sup>  
->> Update (2023-12-09 v2): Uuuh awkward, apparently my friend doesn't have tmobile/odido unlimited anymore so can't use his credentials to test. Since I have Vodafone myself it's impossible for me to develop.
-
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
-# T-Mobile Unlimited GO Auto Bundle Requester
+# Odido Unlimited Auto Bundle Requester
 
 ### Without needing to sniff your URL every month.
 It runs every 5 mins (can be set with ENV variable `UPDATE_INTERVAL`), and requests new bundle when MB's is less than 2000.
@@ -20,13 +15,17 @@ There are 3 main ways to use this software in production:
 2. running it as a Docker container
 3. running it as a Docker container via docker-compose
 
+## Authorization Token
+To run this script, an authorization token is needed.
+Obtain the token using the **Odido Authenticator tool**:
+[Odido Authenticator lastest Release](https://github.com/GuusBackup/Odido.Authenticator/releases/latest)
+
 ### Node.js with Yarn/NPM
 1. `git clone https://github.com/lodu/TMobile-NL-Unlimited-Bundle-Automated`
 2. `yarn` or `npm install`
 3.  create a file called `.env` in root folder with contents:
       ```bash
-      EMAIL=example@example.com
-      PASSWORD=3x4mp1e!
+      AUTHORIZATIONTOKEN=xxxxxxxxxx
       MSISDN=+3161234567890
       UPDATE_INTERVAL=5
       ```
@@ -38,8 +37,7 @@ There are 3 main ways to use this software in production:
 ### Docker
 1.  create a file called `.env`:
       ```bash
-      EMAIL=example@example.com
-      PASSWORD=3x4mp1e!
+      AUTHORIZATIONTOKEN=xxxxxxxxxx
       MSISDN=+3161234567890
       UPDATE_INTERVAL=5
       ```
@@ -49,8 +47,7 @@ There are 3 main ways to use this software in production:
 ### docker-compose
 1.  create a file called `.env`:
       ```bash
-      EMAIL=example@example.com
-      PASSWORD=3x4mp1e!
+      AUTHORIZATIONTOKEN=xxxxxxxxxx
       MSISDN=+3161234567890
       UPDATE_INTERVAL=5
       ```
@@ -61,8 +58,7 @@ There are 3 main ways to use this software in production:
 1. `git clone` the repo (duhh)
 2. Create `.env` file in root directory:
    ```bash
-   EMAIL=example@example.com
-   PASSWORD=3x4mp1e!
+   AUTHORIZATIONTOKEN=xxxxxxxxxx
    MSISDN=+3161234567890
    UPDATE_INTERVAL=5
    ```
