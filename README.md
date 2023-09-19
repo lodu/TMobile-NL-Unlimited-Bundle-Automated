@@ -18,7 +18,7 @@ There are 3 main ways to use this software in production:
 ## Authorization Token
 To run this script, an authorization token is needed.
 Obtain the token using the **Odido Authenticator tool**:
-[Odido Authenticator lastest Release](https://github.com/GuusBackup/Odido.Authenticator/releases/latest)
+[Odido Authenticator latest Release](https://github.com/GuusBackup/Odido.Authenticator/releases/latest)
 
 ### Node.js with Yarn/NPM
 1. `git clone https://github.com/lodu/TMobile-NL-Unlimited-Bundle-Automated`
