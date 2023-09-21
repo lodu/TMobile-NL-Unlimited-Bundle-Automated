@@ -54,7 +54,7 @@ export function makeHeaders(headersAsObject: object): Headers {
 
 export function checkENVs() {
   if (
-    [process.env.EMAIL, process.env.PASSWORD, process.env.MSISDN].includes(
+    [process.env.AUTHORIZATIONTOKEN, process.env.MSISDN].includes(
       undefined
     )
   ) {
