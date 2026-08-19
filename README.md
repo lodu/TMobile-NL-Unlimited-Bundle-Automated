@@ -1,3 +1,8 @@
+# Deprecated
+Gebruik: https://github.com/lodu/odido-bundle-replenisher
+
+
+
 > Based on: https://gathering.tweakers.net/forum/view_message/69930184
 
 # Odido Unlimited Auto Bundle Requester
